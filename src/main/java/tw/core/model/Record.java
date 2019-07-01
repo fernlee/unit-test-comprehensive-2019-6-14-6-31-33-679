@@ -33,6 +33,9 @@ public class Record {
         if (value[0] == 0 && value[1] == 0) {
             return "all wrong";
         }
+        if (value[1] == 4) {
+            return "4 numbers position wrong";
+        }
         if (correctNumList.size() != 0) {
             result = toString(correctNumList) + "correct";
         }

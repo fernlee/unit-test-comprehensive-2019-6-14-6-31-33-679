@@ -53,7 +53,7 @@ public class GameTest {
         game.guess(Answer.createAnswer("2 4 7 8"));
         game.guess(Answer.createAnswer("0 3 2 4"));
         game.guess(Answer.createAnswer("5 6 7 8"));
-//        game.guess(Answer.createAnswer("4 3 2 1"));
+        game.guess(Answer.createAnswer("4 3 2 1"));
 //        game.guess(Answer.createAnswer("1 2 3 4"));
 
         //when
@@ -66,6 +66,7 @@ public class GameTest {
         assertThat(guessResults.get(1).getInstruction()).isEqualTo("2 and 4 wrong position");
         assertThat(guessResults.get(2).getInstruction()).isEqualTo("4 correct, 2 and 3 wrong position");
         assertThat(guessResults.get(3).getInstruction()).isEqualTo("all wrong");
+        assertThat(guessResults.get(4).getInstruction()).isEqualTo("4 numbers position wrong");
     }
 
     @Test
