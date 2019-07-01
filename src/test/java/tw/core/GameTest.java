@@ -40,10 +40,32 @@ public class GameTest {
         //then
         assertThat(guessResults.size()).isEqualTo(2);
         assertThat(guessResults.get(0).getResult()).isEqualTo("0A2B");
+        assertThat(guessResults.get(0).getInstruction()).isEqualTo("1 and 2 wrong position");
         assertThat(guessResults.get(0).getInputAnswer().toString()).isEqualTo("2 1 6 7");
 
         assertThat(guessResults.get(1).getResult()).isEqualTo("4A0B");
         assertThat(guessResults.get(1).getInputAnswer().toString()).isEqualTo("1 2 3 4");
+        assertThat(guessResults.get(0).getInstruction()).isEqualTo("win, all correct");
+    }
+
+    @Test
+    public void should_get_instruction_of_every_guess_result_when_guess_multiple_times_and_call_guessHistory() throws OutOfGuessCountException {
+        //given
+        game.guess(Answer.createAnswer("1 5 6 7"));
+//        game.guess(Answer.createAnswer("2 4 7 8"));
+//        game.guess(Answer.createAnswer("0 3 2 4"));
+//        game.guess(Answer.createAnswer("5 6 7 8"));
+//        game.guess(Answer.createAnswer("4 3 2 1"));
+//        game.guess(Answer.createAnswer("1 2 3 4"));
+
+        //when
+        List<GuessResult> guessResults = game.guessHistory();
+
+        //then
+        assertThat(guessResults.size()).isEqualTo(1);
+        assertThat(guessResults.get(0).getResult()).isEqualTo("1A0B");
+        assertThat(guessResults.get(0).getInstruction()).isEqualTo("1 correct");
+        assertThat(guessResults.get(0).getInputAnswer().toString()).isEqualTo("1 5 6 7");
     }
 
     @Test

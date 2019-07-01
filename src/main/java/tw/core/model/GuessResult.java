@@ -8,10 +8,12 @@ import tw.core.Answer;
 public class GuessResult {
     private final Answer inputAnswer;
     private final String result;
+    private final String instruction;
 
-    public GuessResult(String result, Answer inputAnswer) {
+    public GuessResult(String result, Answer inputAnswer, String instruction) {
         this.result = result;
         this.inputAnswer = inputAnswer;
+        this.instruction = instruction;
     }
 
     public String getResult() {
@@ -20,5 +22,9 @@ public class GuessResult {
 
     public Answer getInputAnswer() {
         return inputAnswer;
+    }
+
+    public String getInstruction() {
+        return instruction;
     }
 }

@@ -5,6 +5,7 @@ import tw.core.exception.AnswerFormatIncorrectException;
 import tw.core.exception.OutOfGuessCountException;
 import tw.core.generator.AnswerGenerator;
 import tw.core.model.GuessResult;
+import tw.core.model.Record;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +34,10 @@ public class Game {
         if (!checkCoutinue()) {
             throw new OutOfGuessCountException("Guess count cant over 6!");
         }
-        final String result = actualAnswer.check(inputAnswer).getValue();
-        GuessResult guessResult = new GuessResult(result, inputAnswer);
+        Record record = actualAnswer.check(inputAnswer);
+        final String result = record.getValue();
+        final String instruction = record.getInstruction();
+        GuessResult guessResult = new GuessResult(result, inputAnswer, instruction);
         guessResults.add(guessResult);
         return guessResult;
     }

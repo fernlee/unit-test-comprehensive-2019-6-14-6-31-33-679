@@ -56,7 +56,7 @@ public class GameControllerTest {
         when(game.guessHistory()).thenReturn(new ArrayList<>());
         when(game.checkStatus()).thenReturn("");
         when(game.checkCoutinue()).thenReturn(true, false);
-        when(game.guess(errorAnswer)).thenReturn(new GuessResult("", errorAnswer));
+        when(game.guess(errorAnswer)).thenReturn(new GuessResult("", errorAnswer, ""));
         GameController gameController = new GameController(game, mockGameView);
 
         //when

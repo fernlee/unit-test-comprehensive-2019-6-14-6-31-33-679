@@ -27,15 +27,16 @@ public class Answer {
         return answer;
     }
 
+
     public Record check(Answer inputAnswer) {
         Record record = new Record();
         this.numList.forEach(num -> {
             int index = inputAnswer.getIndexOfNum(num);
             if (index != -1) {
                 if (index == getIndexOfNum(num)) {
-                    record.increaseCurrentNum();
+                    record.increaseCurrentNum(num);
                 } else {
-                    record.increaseIncludeOnlyNum();
+                    record.increaseIncludeOnlyNum(num);
                 }
             }
         });
