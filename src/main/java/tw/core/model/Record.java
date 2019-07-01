@@ -34,7 +34,10 @@ public class Record {
             result = toString(correctNumList) + "correct";
         }
         if (includeOnlyNumList.size() != 0) {
-            result = toString(includeOnlyNumList) + "wrong position";
+            if (!Objects.equals(result, "")) {
+                result += ", ";
+            }
+            result += toString(includeOnlyNumList) + "wrong position";
         }
         return result;
     }
