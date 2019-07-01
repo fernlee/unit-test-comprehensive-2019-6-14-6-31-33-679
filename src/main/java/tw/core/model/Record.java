@@ -1,6 +1,7 @@
 package tw.core.model;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Record {
     private int[] value;
@@ -28,9 +29,29 @@ public class Record {
     }
 
     public String getInstruction() {
+        String result = "";
         if (correctNumList.size() != 0) {
-            return correctNumList.get(0) + " correct";
+            result = toString(correctNumList) + "correct";
         }
-        return "";
+        if (includeOnlyNumList.size() != 0) {
+            result = toString(includeOnlyNumList) + "wrong position";
+        }
+        return result;
+    }
+
+    private String toString(ArrayList<String> list) {
+        if (list.size() == 1) {
+            return list.get(0) + " ";
+        }
+        StringBuilder str = new StringBuilder();
+        for (String num : list) {
+            str.append(num);
+            if (!Objects.equals(list.get(list.size() - 1), num)) {
+                str.append(" and ");
+            } else {
+                str.append(" ");
+            }
+        }
+        return str.toString();
     }
 }
