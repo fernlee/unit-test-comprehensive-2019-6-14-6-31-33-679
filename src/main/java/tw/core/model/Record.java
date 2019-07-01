@@ -30,6 +30,9 @@ public class Record {
 
     public String getInstruction() {
         String result = "";
+        if (value[0] == 0 && value[1] == 0) {
+            return "all wrong";
+        }
         if (correctNumList.size() != 0) {
             result = toString(correctNumList) + "correct";
         }
